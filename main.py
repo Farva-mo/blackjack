@@ -11,7 +11,6 @@ def compareTo(hand):
 
     return hand
 
-
 # function that makes the dealer draw, hard stop between 16-21
 # compares between player total and returns results
 def dealerTurn(player,dealer):
@@ -23,6 +22,7 @@ def dealerTurn(player,dealer):
         dealer = compareTo(dealer)
 
         dealerTotal = sum(dealer)
+
         if dealerTotal > 21:
             print(f"your hand: {player} {playerTotal}")
             print(f"dealers hand is {dealer} {dealerTotal}")
@@ -78,6 +78,7 @@ logo = art.logo
 while play == 'y':
 
     print(logo)
+    #hand out the cards
     dealer=[random.choice(cards),random.choice(cards)]
     player=[random.choice(cards),random.choice(cards)]
 
@@ -110,10 +111,11 @@ while play == 'y':
                 print(f"dealers hand is {dealer[0]}")
                 draw_again = input("do you want to draw another hand? 'y' or 'n' ")
 
-        # if player hasn't busted
+        # if player hasn't busted, its now the dealers turn
         if playerTotal <= 21:
             game_result = dealerTurn(player, dealer)
 
+        # print the game results, and ask the player if they want to play again
         print(f"you {game_result}!\n")
         play = input("Do you want to play again? 'y' or 'n' ").lower()
         if play == 'y':
